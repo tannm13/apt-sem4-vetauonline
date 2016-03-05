@@ -20,19 +20,8 @@ import java.util.logging.Logger;
  */
 public class DataProcess {
 
-    public Connection getConnection() {
-        Connection conn = null;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String user = "sa";
-            String pass = "sa1234";
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=BanVeTauOnline";
-            conn = DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     public Connection getConnection() {
+        Connection conn = DBConfig.getConnection();
         return conn;
     }
 
