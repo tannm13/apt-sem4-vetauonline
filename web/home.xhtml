@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <ui:composition template="template/common/commonLayout.xhtml">
+            <ui:define name="title">
+                Trang chủ
+            </ui:define>
+
+            <ui:define name="content">
+
+                <f:view>
+                    <div class="col-sm-4">
+                        <h:form>
+                            Ga Đi <br/>
+                            <h:selectOneMenu class="form-control">
+                                <f:selectItem itemValue="HANOI" itemLabel="HANOI" />
+                                <f:selectItem itemValue="DANANG" itemLabel="DANANG" />
+                                <f:selectItem itemValue="SAIGON" itemLabel="SAIGON" />
+                            </h:selectOneMenu>
+                            <br/>
+                            Ga Đến <br/>
+                            <h:selectOneMenu class="form-control">
+                                <f:selectItem itemValue="HANOI" itemLabel="HANOI" />
+                                <f:selectItem itemValue="DANANG" itemLabel="DANANG" />
+                                <f:selectItem itemValue="SAIGON" itemLabel="SAIGON" />
+                            </h:selectOneMenu>
+                            <br/>
+                            Ngày Đi <br/>
+                            <h:inputText class="form-control" value=""/>
+                            <br/><br/>
+                            
+                            <h:commandButton value="Tìm kiếm" class="btn btn-primary" />
+                        </h:form> 
+                    </div>
+                </f:view>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
