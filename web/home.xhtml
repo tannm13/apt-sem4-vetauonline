@@ -20,24 +20,24 @@
                     <div class="col-sm-4">
                         <h:form>
                             Ga Đi <br/>
-                            <h:selectOneMenu class="form-control">
+                            <h:selectOneMenu value="#{timTauBean.gaDi}" class="form-control">
                                 <f:selectItem itemValue="HANOI" itemLabel="HANOI" />
                                 <f:selectItem itemValue="DANANG" itemLabel="DANANG" />
                                 <f:selectItem itemValue="SAIGON" itemLabel="SAIGON" />
                             </h:selectOneMenu>
                             <br/>
                             Ga Đến <br/>
-                            <h:selectOneMenu class="form-control">
+                            <h:selectOneMenu value="#{timTauBean.gaDen}" class="form-control">
                                 <f:selectItem itemValue="HANOI" itemLabel="HANOI" />
                                 <f:selectItem itemValue="DANANG" itemLabel="DANANG" />
                                 <f:selectItem itemValue="SAIGON" itemLabel="SAIGON" />
                             </h:selectOneMenu>
                             <br/>
                             Ngày Đi <br/>
-                            <h:inputText class="form-control" value=""/>
+                            <h:inputText class="form-control" />
                             <br/><br/>
                             
-                            <h:commandButton value="Tìm kiếm" class="btn btn-primary" />
+                            <h:commandButton action="#{timTauBean.timTau()}" value="Tìm kiếm" class="btn btn-primary" />
                         </h:form> 
                     </div>
                 </f:view>

@@ -10,15 +10,15 @@
         <h1>Lịch tàu:</h1>
         <h:form>
 
-            <h:selectOneMenu value="{lichTauBean.train}">
+            <h:selectOneMenu value="#{lichTauBean.train}">
                 <f:selectItem itemValue="SE1" itemLabel="SE1" />
                 <f:selectItem itemValue="SE2" itemLabel="SE2" />
                 <f:selectItem itemValue="SE3" itemLabel="SE3" />
             </h:selectOneMenu>
 
-<!--            <h:commandButton value="Xem" action="{lichTauBean.getLichTau()}" />-->
+            <h:commandButton value="Xem" action="#{lichTauBean.getLichTau}" />
 
-            <h:link value="Xem" outcome="traintime-detail" />
+            <!--<h:link value="Xem" outcome="traintime-detail" />-->
         </h:form>
 
         <p><h:link value="Thêm mới lịch tàu" outcome="traintime-new" /></p>

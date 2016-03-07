@@ -10,6 +10,7 @@ package model;
  * @author tannm_a05357
  */
 public class LichTau {
+    private int idTau;
     private String tau;
     private String gaDung;
     private int sttGaDung;
@@ -17,6 +18,14 @@ public class LichTau {
     private String gioDen;
     private int khoangCach;
 
+    public int getIdTau() {
+        return idTau;
+    }
+
+    public void setIdTau(int idTau) {
+        this.idTau = idTau;
+    } 
+    
     public String getTau() {
         return tau;
     }

@@ -5,6 +5,8 @@
  */
 package app;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import model.DataProcess;
@@ -13,6 +15,8 @@ import model.DataProcess;
  *
  * @author tannm_a05357
  */
+@ManagedBean
+@SessionScoped
 public class LichTauBean {
 
     private String train;
@@ -40,6 +44,6 @@ public class LichTauBean {
 //            session.setAttribute("traintime", this);
             return "traintime-detail";
         }
-        return "failed";
+        return "traintime";
     } 
 }
