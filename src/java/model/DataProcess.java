@@ -105,7 +105,7 @@ public class DataProcess {
                 lichDen.setIdTau(rs2.getInt("IDTau"));
                 lichDen.setGaDung(rs2.getString("TenGa"));
                 lichDen.setSttGaDung(rs2.getInt("IDSttGa"));
-                lichDen.setGioDi(rs2.getString("GioDen"));
+                lichDen.setGioDen(rs2.getString("GioDen"));
                 hmLichDen.put(lichDen.getIdTau(), lichDen);
             }
             rs2.close();

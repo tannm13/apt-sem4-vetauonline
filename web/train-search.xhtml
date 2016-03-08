@@ -18,7 +18,9 @@
                 <div class="col-sm-6">
                     <div class="list-group">
                         <ui:repeat value="#{sessionScope.listKQTK}" var="tau">
-                            <a href="#" class="list-group-item">#{tau.lichDi.idTau}</a>
+                            <a href="#" class="list-group-item">
+                                IDTau: #{tau.lichDi.idTau} | GioDi: #{tau.lichDi.gioDi} | GioDen: #{tau.lichDen.gioDen}
+                            </a>
                         </ui:repeat>
                     </div>
                 </div>
