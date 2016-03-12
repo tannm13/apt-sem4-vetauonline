@@ -14,6 +14,10 @@
                 Trang chủ
             </ui:define>
 
+            <ui:define name="custom-head">
+                <h:outputStylesheet name="css/bootstrap-datepicker3.min.css" library="bootstrap-datepicker" />
+            </ui:define>
+
             <ui:define name="content">
 
                 <f:view>
@@ -34,15 +38,22 @@
                             </h:selectOneMenu>
                             <br/>
                             Ngày Đi <br/>
-                            <h:inputText class="form-control" />
+                            <h:inputText class="ngay-di form-control" />
                             <br/><br/>
-                            
+
                             <h:commandButton action="#{timTauBean.timTau()}" value="Tìm kiếm" class="btn btn-primary" />
                         </h:form> 
                     </div>
                 </f:view>
 
-
+            </ui:define>
+            <ui:define name="custom-foot">
+                <h:outputScript name="js/bootstrap-datepicker.min.js" library="bootstrap-datepicker" />
+                <script type="text/javascript" >
+                    $(document).ready(function(){
+                       $(".ngay-di").datepicker(); 
+                    });
+                </script>
             </ui:define>
         </ui:composition>
     </h:body>

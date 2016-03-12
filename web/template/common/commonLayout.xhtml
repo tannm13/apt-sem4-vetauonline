@@ -42,6 +42,9 @@
             }
         </style>
         
+        <ui:insert name="custom-head">
+        </ui:insert>
+        
         <title>
             <ui:insert name="title">
             </ui:insert>
@@ -70,6 +73,9 @@
 
         <h:outputScript name="js/jquery.min.js" library="bootstrap" />
         <h:outputScript name="js/bootstrap.min.js" library="bootstrap" />
+        <ui:insert name="custom-foot">
+            
+        </ui:insert>
     </h:body>
 </html>
 

@@ -82,12 +82,13 @@ public class DataProcess {
         HashMap hmLichDen = new HashMap();
         
         try {
-            String sql1 = "select * from LichTau join GaTau on LichTau.IDGaDung = GaTau.IDGaTau where TenGa like ?";
+            String sql1 = "select * from LichTau join Tau on LichTau.IDTau = Tau.IDTau join GaTau on LichTau.IDGaDung = GaTau.IDGaTau where TenGa like ?";
             PreparedStatement ps1 = getConnection().prepareStatement(sql1);
             ps1.setString(1, gaDi);
             ResultSet rs1 = ps1.executeQuery();
             while (rs1.next()) {
                 LichTau lichDi = new LichTau();
+                lichDi.setTau(rs1.getString("TenTau"));
                 lichDi.setIdTau(rs1.getInt("IDTau"));
                 lichDi.setGaDung(rs1.getString("TenGa"));
                 lichDi.setSttGaDung(rs1.getInt("IDSttGa"));
@@ -102,6 +103,7 @@ public class DataProcess {
             ResultSet rs2 = ps2.executeQuery();
             while (rs2.next()) {
                 LichTau lichDen = new LichTau();
+                lichDen.setTau(rs2.getString("TenTau"));
                 lichDen.setIdTau(rs2.getInt("IDTau"));
                 lichDen.setGaDung(rs2.getString("TenGa"));
                 lichDen.setSttGaDung(rs2.getInt("IDSttGa"));
