@@ -6,11 +6,15 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -76,10 +80,14 @@ public class DataProcess {
         return list;
     }
     
-    public ArrayList timTau(String gaDi, String gaDen, String gioDi) {
+    public ArrayList timTau(String gaDi, String gaDen, Date gioDi) {
         ArrayList listKQTK = new ArrayList();
         HashMap hmLichDi = new HashMap();
         HashMap hmLichDen = new HashMap();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar cGioDi = Calendar.getInstance();
+        cGioDi.setTime(gioDi);
+        Calendar cGioDiDb = Calendar.getInstance();
         
         try {
             String sql1 = "select * from LichTau join Tau on LichTau.IDTau = Tau.IDTau join GaTau on LichTau.IDGaDung = GaTau.IDGaTau where TenGa like ?";
@@ -92,7 +100,17 @@ public class DataProcess {
                 lichDi.setIdTau(rs1.getInt("IDTau"));
                 lichDi.setGaDung(rs1.getString("TenGa"));
                 lichDi.setSttGaDung(rs1.getInt("IDSttGa"));
-                lichDi.setGioDi(rs1.getString("GioDi"));
+                String g = rs1.getString("GioDi");
+                try {
+                    Date d = sdf.parse(g);               
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(d);
+                    cGioDiDb.setTime(d);
+                    c.set(Calendar.DAY_OF_YEAR, cGioDi.get(Calendar.DAY_OF_YEAR));
+                    lichDi.setGioDi(sdf.format(c.getTime()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 hmLichDi.put(lichDi.getIdTau(), lichDi);
             }
             rs1.close();
@@ -107,7 +125,17 @@ public class DataProcess {
                 lichDen.setIdTau(rs2.getInt("IDTau"));
                 lichDen.setGaDung(rs2.getString("TenGa"));
                 lichDen.setSttGaDung(rs2.getInt("IDSttGa"));
-                lichDen.setGioDen(rs2.getString("GioDen"));
+                String g = rs2.getString("GioDen");
+                try {
+                    Date d = sdf.parse(g);               
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(d);
+                    int diff = c.get(Calendar.DAY_OF_YEAR) - cGioDiDb.get(Calendar.DAY_OF_YEAR);
+                    c.set(Calendar.DAY_OF_YEAR, cGioDi.get(Calendar.DAY_OF_YEAR)+diff);
+                    lichDen.setGioDen(sdf.format(c.getTime()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 hmLichDen.put(lichDen.getIdTau(), lichDen);
             }
             rs2.close();

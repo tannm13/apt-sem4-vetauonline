@@ -37,9 +37,20 @@
                                 <f:selectItem itemValue="SAIGON" itemLabel="SAIGON" />
                             </h:selectOneMenu>
                             <br/>
-                            Ngày Đi <br/>
-                            <h:inputText class="ngay-di form-control" />
+                            <input type="radio" name="khu-hoi" value="1c" checked="checked" /> Một chiều
+                            <input type="radio" name="khu-hoi" value="kh" /> Khứ hồi
                             <br/><br/>
+                            Ngày Đi <br/>
+                            <h:inputText value="#{timTauBean.ngayDi}" class="ngay-di form-control" />
+                            <br/>
+<!--                            <select name="gioDi">
+                                <option value="0">0h</option>
+                                <option value="12">12h</option>
+                            </select>
+                            <br/>-->
+                            Ngày Về <br/>
+                            <h:inputText value="#{timTauBean.ngayVe}" disabled="true" class="ngay-ve form-control" />
+                            <br/>
 
                             <h:commandButton action="#{timTauBean.timTau()}" value="Tìm kiếm" class="btn btn-primary" />
                         </h:form> 
@@ -52,6 +63,14 @@
                 <script type="text/javascript" >
                     $(document).ready(function(){
                        $(".ngay-di").datepicker(); 
+                       $(".ngay-ve").datepicker();
+                       $("input[name=khu-hoi]:radio").click(function(){
+                           if ($("input[name=khu-hoi]:radio:checked").val() == "kh") {
+                               $(".ngay-ve").prop("disabled", false);
+                           } else {
+                               $(".ngay-ve").prop("disabled", true);
+                           }
+                       });
                     });
                 </script>
             </ui:define>
