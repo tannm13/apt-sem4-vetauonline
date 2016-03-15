@@ -7,8 +7,34 @@ package model;
 
 /**
  *
- * @author TAN
+ * @author Duc
  */
 public class Tau {
+    private int IDTau;
+    private String tentau;
+
+    public Tau() {
+    }
+
+    public int getIDTau() {
+        return IDTau;
+    }
+
+    public void setIDTau(int IDTau) {
+        this.IDTau = IDTau;
+    }
+
+    public String getTentau() {
+        return tentau;
+    }
+
+    public void setTentau(String tentau) {
+        this.tentau = tentau;
+    }
+
+    
+
+    
+    
     
 }

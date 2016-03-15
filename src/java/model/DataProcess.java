@@ -27,7 +27,7 @@ import java.util.logging.Logger;
  */
 public class DataProcess {
 
-     public Connection getConnection() {
+    public Connection getConnection() {
         Connection conn = DBConfig.getConnection();
         return conn;
     }
@@ -61,7 +61,7 @@ public class DataProcess {
 //        }
 //        return n > 0;
 //    }
-
+    //frontend
     public ArrayList getLichTau(String tau) {
         ArrayList list = new ArrayList();
         try {
@@ -70,7 +70,7 @@ public class DataProcess {
             ps.setString(1, tau);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                
+
             }
             rs.close();
             ps.close();
@@ -115,7 +115,7 @@ public class DataProcess {
             }
             rs1.close();
             ps1.close();
-            
+
             PreparedStatement ps2 = getConnection().prepareStatement(sql1);
             ps2.setString(1, gaDen);
             ResultSet rs2 = ps2.executeQuery();
@@ -140,25 +140,128 @@ public class DataProcess {
             }
             rs2.close();
             ps2.close();
-            
+
             Iterator i = hmLichDi.entrySet().iterator();
             while (i.hasNext()) {
                 Map.Entry e = (Map.Entry) i.next();
                 int idTau = (int) e.getKey();
                 LichTau lichDi = (LichTau) hmLichDi.get(idTau);
                 LichTau lichDen = (LichTau) hmLichDen.get(idTau);
-                if (lichDen!=null && lichDi.getSttGaDung()<lichDen.getSttGaDung()) {
+                if (lichDen != null && lichDi.getSttGaDung() < lichDen.getSttGaDung()) {
                     KQTK kq = new KQTK();
                     kq.setLichDi(lichDi);
                     kq.setLichDen(lichDen);
                     listKQTK.add(kq);
                 }
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listKQTK;
     }
 
+    // backend
+    public boolean themLichTau(int idTai, int idGaDung, int sttGa, String gioDi, String gioDen) {
+        int n = 0;
+        try {
+            String sql = "insert into LichTau(IDTau,IDGaDung,IDSttGa,GioDi,GioDen) values (?,?,?,?,?)";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, idTai);
+            ps.setInt(2, idGaDung);
+            ps.setInt(3, sttGa);
+            ps.setString(4, gioDi);
+            ps.setString(5, gioDen);
+//            ps.setInt(6, khoangCach);
+//            ps.setInt(7, idTk);
+            n = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n > 0;
+    }
+
+    public ArrayList getTrainTimeById(int id) {
+        ArrayList<LichTau> list = new ArrayList();
+        try {
+            String sql = "select * from LichTau join Tau on LichTau.IDTau = Tau.IDTau join GaTau on LichTau.IDGaDung = GaTau.IDGaTau where LichTau.IDTau = ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String tau = rs.getString("TenTau");
+                String gaDung = rs.getString("TenGa");
+                int sttGaDung = rs.getInt("IDSttGa");
+                String gioDi = rs.getString("GioDi");
+                String gioDen = rs.getString("GioDen");
+                int khoangCach = rs.getInt("KhoangCach");
+                LichTau lt = new LichTau();
+                lt.setGaDung(gaDung);
+                lt.setGioDen(gioDen);
+                lt.setGioDi(gioDi);
+                lt.setKhoangCach(khoangCach);
+                lt.setSttGaDung(sttGaDung);
+                lt.setTau(tau);
+                list.add(lt);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList getTrainTime(String train) {
+        ArrayList<LichTau> list = new ArrayList();
+        try {
+            String sql = "select * from LichTau join Tau on LichTau.IDTau = Tau.IDTau join GaTau on LichTau.IDGaDung = GaTau.IDGaTau where TenTau like ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setString(1, train);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String tau = rs.getString("TenTau");
+                String gaDung = rs.getString("TenGa");
+                int sttGaDung = rs.getInt("IDSttGa");
+                String gioDi = rs.getString("GioDi");
+                String gioDen = rs.getString("GioDen");
+                int khoangCach = rs.getInt("KhoangCach");
+                LichTau lt = new LichTau();
+                lt.setGaDung(gaDung);
+                lt.setGioDen(gioDen);
+                lt.setGioDi(gioDi);
+                lt.setKhoangCach(khoangCach);
+                lt.setSttGaDung(sttGaDung);
+                lt.setTau(tau);
+                list.add(lt);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public ArrayList<Tau> getTrain() {
+        ArrayList<Tau> list = new ArrayList();
+        try {
+            String sql = "select IDTau,TenTau from Tau";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Tau tau = new Tau();
+                String name = rs.getString("TenTau");
+                int id = rs.getInt("IDTau");
+                tau.setIDTau(id);
+                tau.setTentau(name);
+                list.add(tau);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }

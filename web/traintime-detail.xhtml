@@ -1,11 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+
+        <ui:composition template="template/common/adminLayout.xhtml">
+            <ui:define name="content">
+                <h1 class="page-header">Lịch tàu:</h1>
+                <div class="table-responsive">
+                    <!--<table class="table table-striped">-->
+                        <h:dataTable class="table table-striped" value="${sessionScope.lstTrainTime}" var="o">
+                            <h:column>
+                                <!-- column header -->
+                                <f:facet name="header">Ten Tau</f:facet>
+                                <!-- row record -->
+                                ${o.tau}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Ga Dung</f:facet>
+                                    ${o.gaDung}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Gio di</f:facet>
+                                    ${o.gioDi}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Gio den</f:facet>
+                                    ${o.gioDen}
+                            </h:column>
+
+                        </h:dataTable>
+                    <!--</table>-->
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
         <h1>Chi tiết lịch tàu SE1</h1>
         <table border="1">
             <thead>
@@ -45,7 +83,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         <h:link value="Chỉnh sửa" outcome="traintime-edit" />
     </h:body>
 </html>

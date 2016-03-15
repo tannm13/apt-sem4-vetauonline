@@ -12,6 +12,7 @@ package model;
 public class LichTau {
     private int idTau;
     private String tau;
+    private int idGaDung;
     private String gaDung;
     private int sttGaDung;
     private String gioDi;
@@ -32,6 +33,14 @@ public class LichTau {
 
     public void setTau(String tau) {
         this.tau = tau;
+    }
+    
+    public int getIdGaDung() {
+        return idGaDung;
+    }
+
+    public void setIdGaDung(int idGaDung) {
+        this.idGaDung = idGaDung;
     }
 
     public String getGaDung() {

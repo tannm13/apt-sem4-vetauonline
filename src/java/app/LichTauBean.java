@@ -5,22 +5,42 @@
  */
 package app;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import java.util.ArrayList;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import model.DataProcess;
+import model.LichTau;
 
 /**
  *
  * @author tannm_a05357
  */
-@ManagedBean
-@SessionScoped
 public class LichTauBean {
 
+    private ArrayList<LichTau> lstLichTau;
     private String train;
+    private int IDTau;
 
+    public void setIDTau(int IDTau) {
+        this.IDTau = IDTau;
+    }
+
+    
+    
+    public int getIDTau() {
+        return IDTau;
+    }
+
+    public ArrayList<LichTau> getLstLichTau() {
+        return lstLichTau;
+    }
+
+    public void setLstLichTau(ArrayList<LichTau> lstLichTau) {
+        this.lstLichTau = lstLichTau;
+    }
+    
+    
+    
     public String getTrain() {
         return train;
     }
@@ -34,6 +54,11 @@ public class LichTauBean {
     
     
     public LichTauBean() {
+        lstLichTau = new ArrayList<>();
+        for(int i = 0 ; i<= 4; i++){
+            LichTau lt = new LichTau();
+            lstLichTau.add(lt);
+        }
     }
     
     public String getLichTau() {
@@ -44,6 +69,17 @@ public class LichTauBean {
 //            session.setAttribute("traintime", this);
             return "traintime-detail";
         }
-        return "traintime";
-    } 
+        return "failed";
+    }
+    
+    public String ThemLichTau(){
+        DataProcess dp = new DataProcess();
+        for(int i = 0 ; i< lstLichTau.size(); i++){
+            dp.themLichTau(IDTau, lstLichTau.get(i).getIdGaDung(), i+1, lstLichTau.get(i).getGioDi(), lstLichTau.get(i).getGioDen());
+        }
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                    .getExternalContext().getSession(false);
+            session.setAttribute("lstTrainTime", dp.getTrainTimeById(IDTau));
+            return "traintime-detail.xhtml";
+    }
 }

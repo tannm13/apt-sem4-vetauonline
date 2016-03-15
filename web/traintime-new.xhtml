@@ -1,68 +1,78 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h1>Thêm lịch tàu</h1>
-        <form>
-            Chọn tàu:<br/>
-            <select name="tau">
-                <option>SE1</option>
-                <option>SE2</option>
-                <option>SE3</option>
-            </select>
-            <br/>Chọn ga dừng 1:
-            <select name="ga">
-                <option>---</option>
-                <option>HANOI</option>
-                <option>DANANG</option>
-                <option>SAIGON</option>
-            </select>
-            Giờ đi: <input type="text" name="" value="" />
-            Giờ đến: <input type="text" name="" value="" />
-            <br/>Chọn ga dừng 2:
-            <select name="ga">
-                <option>---</option>
-                <option>HANOI</option>
-                <option>DANANG</option>
-                <option>SAIGON</option>
-            </select>
-            Giờ đi: <input type="text" name="" value="" />
-            Giờ đến: <input type="text" name="" value="" />
-            <br/>Chọn ga dừng 3:
-            <select name="ga">
-                <option>---</option>
-                <option>HANOI</option>
-                <option>DANANG</option>
-                <option>SAIGON</option>
-            </select>
-            Giờ đi: <input type="text" name="" value="" />
-            Giờ đến: <input type="text" name="" value="" />
-            <br/>Chọn ga dừng 4:
-            <select name="ga">
-                <option>---</option>
-                <option>HANOI</option>
-                <option>DANANG</option>
-                <option>SAIGON</option>
-            </select>
-            Giờ đi: <input type="text" name="" value="" />
-            Giờ đến: <input type="text" name="" value="" />
-            <br/>Chọn ga dừng 5:
-            <select name="ga">
-                <option>---</option>
-                <option>HANOI</option>
-                <option>DANANG</option>
-                <option>SAIGON</option>
-            </select>
-            Giờ đi: <input type="text" name="" value="" />
-            Giờ đến: <input type="text" name="" value="" />
-            <br/>
-            
-            <input type="submit" value="Thêm" />
-        </form>
+        <ui:composition template="template/common/adminLayout.xhtml">
+            <ui:define name="content">
+                <h1>Thêm lịch tàu</h1>
+                <h:form>
+                    Chọn tàu:<br/>
+                    <h:selectOneMenu value="#{lichTauBean.IDTau}">
+                        <f:selectItems value="#{trainBean.lstTrain}" var="c"
+                                       itemLabel="#{c.tentau}" itemValue="#{c.IDTau}" />
+                        <!--<h:inputHidden value="${c.train}"/>-->
+                    </h:selectOneMenu>
+                    
+                    <br/>Chọn ga dừng 1:
+                    <h:selectOneMenu value="#{lichTauBean.lstLichTau[0].idGaDung}">
+                        <f:selectItem itemLabel="HANOI" itemValue="1"></f:selectItem>
+                        <f:selectItem itemLabel="DANANG" itemValue="2"></f:selectItem>
+                        <f:selectItem itemLabel="SAIGON" itemValue="3"></f:selectItem>
+                    </h:selectOneMenu>
+                        
+                    Giờ đi: <h:inputText value="#{lichTauBean.lstLichTau[0].gioDi}"/>
+                    Giờ đến: <h:inputText value="#{lichTauBean.lstLichTau[0].gioDen}"/>
+                    <br/>Chọn ga dừng 2:
+                    <h:selectOneMenu value="#{lichTauBean.lstLichTau[1].idGaDung}">
+                        <f:selectItem itemLabel="HANOI" itemValue="1"></f:selectItem>
+                        <f:selectItem itemLabel="DANANG" itemValue="2"></f:selectItem>
+                        <f:selectItem itemLabel="SAIGON" itemValue="3"></f:selectItem>
+                    </h:selectOneMenu>
+                        
+                    Giờ đi: <h:inputText value="#{lichTauBean.lstLichTau[1].gioDi}"/>
+                    Giờ đến: <h:inputText value="#{lichTauBean.lstLichTau[1].gioDen}"/>
+                    <br/>Chọn ga dừng 3:
+                    <h:selectOneMenu value="#{lichTauBean.lstLichTau[2].idGaDung}">
+                        <f:selectItem itemLabel="HANOI" itemValue="1"></f:selectItem>
+                        <f:selectItem itemLabel="DANANG" itemValue="2"></f:selectItem>
+                        <f:selectItem itemLabel="SAIGON" itemValue="3"></f:selectItem>
+                    </h:selectOneMenu>
+                        
+                    Giờ đi: <h:inputText value="#{lichTauBean.lstLichTau[2].gioDi}"/>
+                    Giờ đến: <h:inputText value="#{lichTauBean.lstLichTau[2].gioDen}"/>
+                    <br/>Chọn ga dừng 4:
+                    <h:selectOneMenu value="#{lichTauBean.lstLichTau[3].idGaDung}">
+                        <f:selectItem itemLabel="HANOI" itemValue="1"></f:selectItem>
+                        <f:selectItem itemLabel="DANANG" itemValue="2"></f:selectItem>
+                        <f:selectItem itemLabel="SAIGON" itemValue="3"></f:selectItem>
+                    </h:selectOneMenu>
+                        
+                    Giờ đi: <h:inputText value="#{lichTauBean.lstLichTau[3].gioDi}"/>
+                    Giờ đến: <h:inputText value="#{lichTauBean.lstLichTau[3].gioDen}"/>
+                    <br/>Chọn ga dừng 5:
+                    <h:selectOneMenu value="#{lichTauBean.lstLichTau[4].idGaDung}">
+                        <f:selectItem itemLabel="HANOI" itemValue="1"></f:selectItem>
+                        <f:selectItem itemLabel="DANANG" itemValue="2"></f:selectItem>
+                        <f:selectItem itemLabel="SAIGON" itemValue="3"></f:selectItem>
+                    </h:selectOneMenu>
+                        
+                    Giờ đi: <h:inputText value="#{lichTauBean.lstLichTau[4].gioDi}"/>
+                    Giờ đến: <h:inputText value="#{lichTauBean.lstLichTau[4].gioDen}"/>
+                    <br/>
+
+                    <!--<input type="submit" value="Thêm" />-->
+                    <h:commandButton value="Thêm" action="#{lichTauBean.ThemLichTau()}" />
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
     </h:body>
 </html>
 
