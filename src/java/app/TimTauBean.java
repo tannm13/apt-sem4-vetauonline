@@ -79,15 +79,15 @@ public class TimTauBean implements Serializable {
 	String loaiVe = params.get("khu-hoi");
         String sGioDi = params.get("gioDi");
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        Date gioDi = new Date();
+        Date dateNgayDi = new Date();
         try {
-            gioDi = sdf.parse(ngayDi);
+            dateNgayDi = sdf.parse(ngayDi);
         } catch (ParseException ex) {
             Logger.getLogger(TimTauBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         DataProcess dp = new DataProcess();
-        ArrayList listKQTK = dp.timTau(gaDi, gaDen, gioDi);
+        ArrayList listKQTK = dp.timTau(gaDi, gaDen, dateNgayDi);
         if (!listKQTK.isEmpty()) {
             
             

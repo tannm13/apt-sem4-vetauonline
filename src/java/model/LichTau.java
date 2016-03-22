@@ -15,7 +15,6 @@ public class LichTau {
     private int idGaDung;
     private String gaDung;
     private int sttGaDung;
-    private String gioDi;
     private String gioDen;
     private int khoangCach;
 
@@ -59,12 +58,12 @@ public class LichTau {
         this.sttGaDung = sttGaDung;
     }
 
-    public String getGioDi() {
-        return gioDi;
+    public int getKhoangCach() {
+        return khoangCach;
     }
 
-    public void setGioDi(String gioDi) {
-        this.gioDi = gioDi;
+    public void setKhoangCach(int khoangCach) {
+        this.khoangCach = khoangCach;
     }
 
     public String getGioDen() {
@@ -75,13 +74,5 @@ public class LichTau {
         this.gioDen = gioDen;
     }
 
-    public int getKhoangCach() {
-        return khoangCach;
-    }
-
-    public void setKhoangCach(int khoangCach) {
-        this.khoangCach = khoangCach;
-    }
-    
     
 }

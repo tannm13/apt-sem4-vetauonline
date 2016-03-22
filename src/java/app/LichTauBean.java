@@ -72,14 +72,14 @@ public class LichTauBean {
         return "failed";
     }
     
-    public String ThemLichTau(){
-        DataProcess dp = new DataProcess();
-        for(int i = 0 ; i< lstLichTau.size(); i++){
-            dp.themLichTau(IDTau, lstLichTau.get(i).getIdGaDung(), i+1, lstLichTau.get(i).getGioDi(), lstLichTau.get(i).getGioDen());
-        }
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-                    .getExternalContext().getSession(false);
-            session.setAttribute("lstTrainTime", dp.getTrainTimeById(IDTau));
-            return "traintime-detail.xhtml";
-    }
+//    public String ThemLichTau(){
+//        DataProcess dp = new DataProcess();
+//        for(int i = 0 ; i< lstLichTau.size(); i++){
+//            dp.themLichTau(IDTau, lstLichTau.get(i).getIdGaDung(), i+1, lstLichTau.get(i).getGioDi(), lstLichTau.get(i).getGioDen());
+//        }
+//        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+//                    .getExternalContext().getSession(false);
+//            session.setAttribute("lstTrainTime", dp.getTrainTimeById(IDTau));
+//            return "traintime-detail.xhtml";
+//    }
 }

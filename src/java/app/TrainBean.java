@@ -46,18 +46,18 @@ public class TrainBean {
     /**
      * Creates a new instance of TrainBean
      */
-    public TrainBean() {
-        DataProcess dt = new DataProcess();
-        lstTrain = dt.getTrain();
-    }
-    
-    public String tim(){
-       String strName = tenTau;
-       DataProcess dt = new DataProcess();
-       HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-                    .getExternalContext().getSession(false);
-            session.setAttribute("lstTrainTime", dt.getTrainTime(strName));
-        return "traintime-detail";
-    }
+//    public TrainBean() {
+//        DataProcess dt = new DataProcess();
+//        lstTrain = dt.getTrain();
+//    }
+//    
+//    public String tim(){
+//       String strName = tenTau;
+//       DataProcess dt = new DataProcess();
+//       HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+//                    .getExternalContext().getSession(false);
+//            session.setAttribute("lstTrainTime", dt.getTrainTime(strName));
+//        return "traintime-detail";
+//    }
     
 }
