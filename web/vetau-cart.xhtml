@@ -22,26 +22,16 @@
                             <h:column>
                                 <f:facet name="header">IDGhe</f:facet> 
                                 ${ghe.idGhe}
-                                <input type="hidden" name="idghe-${sessionScope.vetauCart.indexOf(ghe)}" value="${ghe.idGhe}" />
                             </h:column> 
                             <h:column>
                                 <f:facet name="header">HoTen</f:facet> 
-                                <input type="text" name="hoten-${sessionScope.vetauCart.indexOf(ghe)}" />
+                                
                             </h:column>
                             <h:column>
                                 <f:facet name="header">CMTND</f:facet> 
-                                <input type="text" name="cmt-${sessionScope.vetauCart.indexOf(ghe)}" />
+                                
                             </h:column>
                         </h:dataTable>
-                        <input type="hidden" name="tong-so" value="${sessionScope.vetauCart.size()}" />
-                        Họ tên: <br/>
-                        <h:inputText value="#{donHangBean.hoTen}" /><br/>
-                        CMTND: <br/>
-                        <h:inputText value="#{donHangBean.cmtnd}" /><br/>
-                        <input type="radio" name="thanh-toan" value="Thanh toán trực tuyến" checked="checked" />Thanh toán trực tuyến
-                        <input type="radio" name="thanh-toan" value="Trả sau" />Trả sau
-                        <br/>
-                        <h:commandButton action="#{donHangBean.muaHang()}" value="Thanh toán" />
                     </h:form>
                 </f:view>
 

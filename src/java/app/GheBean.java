@@ -8,8 +8,8 @@ package app;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
+import javax.enterprise.context.Dependent;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import model.DataProcess;
@@ -19,8 +19,8 @@ import model.Ghe;
  *
  * @author TAN
  */
-@ManagedBean(name = "gheBean")
-@RequestScoped
+@Named(value = "gheBean")
+@Dependent
 public class GheBean {
 
     private ArrayList cart;

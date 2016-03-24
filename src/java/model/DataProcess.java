@@ -187,53 +187,6 @@ public class DataProcess {
         return list;
     }
     
-    public boolean themDonhang(DonHang don) {
-        int n = 0;
-        try {
-            String sql = "insert into DonHang(TenKH, CMND) values (?,?)";
-            PreparedStatement ps = getConnection().prepareStatement(sql);
-            ps.setString(1, don.getHoTen());
-            ps.setString(2, don.getCmtnd());
-            n = ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n > 0;
-    }
-    
-    public int getTopIdDonhang() {
-        int id = 0;
-        try {
-            String sql = "select top 1 from DonHang order by IDDonHang desc";
-            PreparedStatement ps = getConnection().prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                id = rs.getInt("IDDonHang");
-            }
-            rs.close();
-            ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return id;
-    }
-    
-    public boolean themVetau(VeTau ve) {
-        int n = 0;
-        try {
-            String sql = "insert into VeTau(IDGhe, TenKH, CMND, IDDonHang) values (?,?,?,?)";
-            PreparedStatement ps = getConnection().prepareStatement(sql);
-            ps.setString(1, ve.getIdGhe());
-            ps.setString(2, ve.getTenKh());
-            ps.setString(3, ve.getCmnd());
-            ps.setInt(4, ve.getIdDonhang());
-            n = ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n > 0;
-    }
-    
     // backend
 //    public boolean themLichTau(int idTai, int idGaDung, int sttGa, String gioDi, String gioDen) {
 //        int n = 0;

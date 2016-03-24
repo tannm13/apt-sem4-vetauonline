@@ -56,17 +56,6 @@ create table LichTau
 )
 go
 
-create table DonHang
-(
-	IDDonHang int primary key identity,
-	TenKH nvarchar(100),
-	CMND varchar(50),
-	GiaTien int,
-	NgayMua datetime,
-	Status varchar(10)
-)
-go
-
 create table VeTau
 (
 	IDVe int primary key identity,
@@ -79,7 +68,6 @@ create table VeTau
 	GioDi datetime,
 	GioDen datetime,
 	GiaVe int,
-	IDDonHang int foreign key references DonHang(IDDonHang),
 	Status varchar(10)
 )
 go
