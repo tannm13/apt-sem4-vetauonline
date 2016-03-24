@@ -10,10 +10,21 @@ package model;
  * @author TAN
  */
 public class Ghe {
+    private int noGhe;
     private String idGhe;
     private String loaiGhe;
     private int idTau;
     private String statusGhe;
+
+    public int getNoGhe() {
+        return noGhe;
+    }
+
+    public void setNoGhe(int noGhe) {
+        this.noGhe = noGhe;
+    }
+    
+    
 
     public String getIdGhe() {
         return idGhe;
