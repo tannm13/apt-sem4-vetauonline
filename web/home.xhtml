@@ -5,10 +5,9 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        Hello from Facelets 
         <ui:composition template="template/common/commonLayout.xhtml">
             <ui:define name="title">
                 Trang chủ
@@ -19,9 +18,8 @@
             </ui:define>
 
             <ui:define name="content">
-
                 <f:view>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-md-4 col-xs-12 ">
                         <h:form>
                             Ga Đi <br/>
                             <h:selectOneMenu value="#{timTauBean.gaDi}" class="form-control">
@@ -51,9 +49,32 @@
                             Ngày Về <br/>
                             <h:inputText value="#{timTauBean.ngayVe}" disabled="true" class="ngay-ve form-control" />
                             <br/>
-
                             <h:commandButton action="#{timTauBean.timTau()}" value="Tìm kiếm" class="btn btn-primary" />
                         </h:form> 
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-xs-12 kim">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                          <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                          <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                          <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner">
+                          <div class="item  active">
+                              <img data-src="holder.js/1140x500/auto/#777:#555/text:First slide" alt="First slide" src="resources/img/anh1.jpg"/>
+                          </div>
+                          <div class="item">
+                              <img data-src="holder.js/1140x500/auto/#666:#444/text:Second slide" alt="Second slide" src="resources/img/anh2.jpg"/>
+                          </div>
+                          <div class="item">
+                              <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide" src="resources/img/anh3.jpg"/>
+                          </div>
+                          <div class="item">
+                              <img data-src="holder.js/1140x500/auto/#555:#333/text:Third slide" alt="Third slide" src="resources/img/anh4.jpg"/>
+                          </div>
+                        </div>                        
+                      </div>
                     </div>
                 </f:view>
 
